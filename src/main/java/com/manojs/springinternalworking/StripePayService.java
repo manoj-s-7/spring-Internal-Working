@@ -1,10 +1,11 @@
 package com.manojs.springinternalworking;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
 @Component
+@ConditionalOnProperty(name = "payment.provider",havingValue = "stripe")
 public class StripePayService implements PaymentService {
     @Override
     public String pay() {
